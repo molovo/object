@@ -1,0 +1,11 @@
+{
+  "name": "molovo/object",
+  "autoload": {
+    "psr-4": {
+      "Molovo\\Object\\": "src/"
+    }
+  },
+  "require": {
+    "PHP": ">=5.5"
+  }
+}
