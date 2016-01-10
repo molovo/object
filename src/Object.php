@@ -20,7 +20,7 @@ class Object
     {
         foreach ($values as &$value) {
             if (is_array($value)) {
-                $value = new self($value);
+                $value = new static($value);
             }
         }
 
@@ -117,7 +117,7 @@ class Object
                 continue;
             }
 
-            $object  = new self;
+            $object  = new static;
             $pointer = &$object->{$bit};
         }
 
