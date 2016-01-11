@@ -43,7 +43,8 @@ class Object implements IteratorAggregate
             return $this->values[$key];
         }
 
-        $null = null
+        $null = null;
+
         return $null;
     }
 
