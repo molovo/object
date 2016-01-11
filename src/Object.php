@@ -40,7 +40,7 @@ class Object
             return $this->values[$key];
         }
 
-        return;
+        return $null = null;
     }
 
     /**
