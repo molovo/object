@@ -2,7 +2,10 @@
 
 namespace Molovo\Object;
 
-class Object
+use ArrayIterator;
+use IteratorAggregate;
+
+class Object implements IteratorAggregate
 {
     /**
      * The stored object values.
@@ -122,5 +125,16 @@ class Object
         }
 
         return $pointer = $value;
+    }
+
+    /**
+     * Fulfils the IteratorAggregate implementation to allow foreach
+     * to loop through the object's values.
+     *
+     * @return \ArrayIterator
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->values);
     }
 }
