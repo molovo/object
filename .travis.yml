@@ -16,4 +16,4 @@ install:
 script: vendor/bin/codecept run $COVERAGE_FLAGS
 
 after_success:
-  - travis_retry php vendor/bin/coveralls
+  - php vendor/bin/coveralls -v
