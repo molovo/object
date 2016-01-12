@@ -1,0 +1,344 @@
+<?php
+$coverage = new PHP_CodeCoverage;
+$coverage->setData(array (
+  '/usr/local/var/www/object.dev/src/Object.php' => 
+  array (
+    24 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingValues',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingNonexistentValues',
+      2 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingValues',
+      3 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingNonexistentValues',
+      4 => 'Molovo\\Object\\Tests\\ObjectTest::testNestedObjects',
+      5 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingWithinNestedObjects',
+      6 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    25 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingValues',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingNonexistentValues',
+      2 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingValues',
+      3 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingNonexistentValues',
+      4 => 'Molovo\\Object\\Tests\\ObjectTest::testNestedObjects',
+      5 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingWithinNestedObjects',
+      6 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    26 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testNestedObjects',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingWithinNestedObjects',
+    ),
+    27 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testNestedObjects',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingWithinNestedObjects',
+    ),
+    28 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingValues',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingNonexistentValues',
+      2 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingValues',
+      3 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingNonexistentValues',
+      4 => 'Molovo\\Object\\Tests\\ObjectTest::testNestedObjects',
+      5 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingWithinNestedObjects',
+      6 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    30 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingValues',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingNonexistentValues',
+      2 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingValues',
+      3 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingNonexistentValues',
+      4 => 'Molovo\\Object\\Tests\\ObjectTest::testNestedObjects',
+      5 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingWithinNestedObjects',
+      6 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    31 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingValues',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingNonexistentValues',
+      2 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingValues',
+      3 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingNonexistentValues',
+      4 => 'Molovo\\Object\\Tests\\ObjectTest::testNestedObjects',
+      5 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingWithinNestedObjects',
+      6 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    42 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingValues',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingNonexistentValues',
+      2 => 'Molovo\\Object\\Tests\\ObjectTest::testNestedObjects',
+      3 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    43 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingValues',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testNestedObjects',
+      2 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    44 => NULL,
+    46 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGettingNonexistentValues',
+    ),
+    47 => NULL,
+    58 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingValues',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingNonexistentValues',
+      2 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingWithinNestedObjects',
+    ),
+    60 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingValues',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingNonexistentValues',
+      2 => 'Molovo\\Object\\Tests\\ObjectTest::testSettingWithinNestedObjects',
+    ),
+    61 => NULL,
+    70 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testToArray',
+    ),
+    72 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testToArray',
+    ),
+    73 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testToArray',
+    ),
+    74 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testToArray',
+    ),
+    75 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testToArray',
+    ),
+    76 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testToArray',
+    ),
+    77 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testToArray',
+    ),
+    79 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testToArray',
+    ),
+    80 => NULL,
+    91 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    92 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    93 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    95 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testGetPointer',
+    ),
+    96 => NULL,
+    107 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForNonexistentPath',
+    ),
+    109 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForNonexistentPath',
+    ),
+    110 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForNonexistentPath',
+    ),
+    111 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForNonexistentPath',
+    ),
+    112 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForNonexistentPath',
+    ),
+    113 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForNonexistentPath',
+    ),
+    114 => NULL,
+    116 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForNonexistentPath',
+    ),
+    117 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForNonexistentPath',
+    ),
+    119 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testValueForNonexistentPath',
+    ),
+    120 => NULL,
+    133 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    136 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    139 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    142 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    143 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    144 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    145 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    149 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    150 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    151 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    152 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    153 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    156 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    159 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath',
+      1 => 'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath',
+    ),
+    160 => NULL,
+    170 => 
+    array (
+      0 => 'Molovo\\Object\\Tests\\ObjectTest::testObjectIteration',
+    ),
+    171 => NULL,
+  ),
+));
+$coverage->setTests(array (
+  'Molovo\\Object\\Tests\\ObjectTest::testGettingValues' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testGettingNonexistentValues' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testSettingValues' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testSettingNonexistentValues' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testToArray' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testNestedObjects' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testSettingWithinNestedObjects' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testObjectIteration' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testGetPointer' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testValueForPath' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testValueForNonexistentPath' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testSetValueForPath' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Molovo\\Object\\Tests\\ObjectTest::testSetValueForNonexistentPath' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+));
+
+$filter = $coverage->filter();
+$filter->setBlacklistedFiles(array (
+));
+$filter->setWhitelistedFiles(array (
+  '/usr/local/var/www/object.dev/src/Object.php' => true,
+));
+
+return $coverage;
