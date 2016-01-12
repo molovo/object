@@ -7,5 +7,11 @@
   },
   "require": {
     "PHP": ">=5.5"
+  },
+  "require-dev": {
+    "filp/whoops": "1.*",
+    "codeception/codeception": "^2.1",
+    "codeception/verify": "^0.3.0",
+    "satooshi/php-coveralls": "^1.0"
   }
 }
