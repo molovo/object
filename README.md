@@ -1,5 +1,7 @@
 # Object
 
+[![Build Status](https://travis-ci.org/molovo/object.svg)](https://travis-ci.org/molovo/object) [![Coverage Status](https://coveralls.io/repos/molovo/object/badge.svg?branch=master&service=github)](https://coveralls.io/github/molovo/object?branch=master)
+
 A lightweight object wrapper, ideal for storing nested config etc.
 
 #### Install
