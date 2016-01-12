@@ -39,7 +39,8 @@ echo $object->valueForPath('some.awesome'); // returns 'code'
 $object->setValueForPath('some.awesome.new.values.are', 'awesome');
 
 // Get a pointer to a value (even if it doesn't exist)
-$pointer = &$object->getPointer('some.new.value');
+$pointer = &$object->getPointer('some');
+$pointer = &$pointer->getPointer('value');
 $pointer = 'rules';
 
 // Return the values as an array
@@ -54,9 +55,7 @@ $object->toArray();
 //         ]
 //       ]
 //     ],
-//     'new' => [
-//       'value' => 'rules'
-//     ]
+//     'value' => 'rules'
 //   ]
 // ]
 ```
