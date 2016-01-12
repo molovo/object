@@ -37,15 +37,13 @@ class Object implements IteratorAggregate
      *
      * @return mixed The value
      */
-    public function &__get($key)
+    public function __get($key)
     {
         if (isset($this->values[$key])) {
             return $this->values[$key];
         }
 
-        $null = null;
-
-        return $null;
+        return;
     }
 
     /**
@@ -55,9 +53,11 @@ class Object implements IteratorAggregate
      *
      * @return mixed The value
      */
-    public function &__set($key, $value = null)
+    public function __set($key, $value = null)
     {
-        return $this->values[$key] = $value;
+        $this->values[$key] = $value;
+
+        return $this->values[$key];
     }
 
     /**
@@ -70,13 +70,29 @@ class Object implements IteratorAggregate
         $rtn = [];
 
         foreach ($this->values as $key => $value) {
-            if ($value instanceof self) {
+            if ($value instanceof static) {
                 $value = $value->toArray();
             }
             $rtn[$key] = $value;
         }
 
         return $rtn;
+    }
+
+    /**
+     * Get a pointer to a value.
+     *
+     * @param string $key The key to get the pointer for
+     *
+     * @return mixed
+     */
+    public function &getPointer($key)
+    {
+        if (!isset($this->values[$key])) {
+            $this->values[$key] = null;
+        }
+
+        return $this->values[$key];
     }
 
     /**
@@ -90,9 +106,9 @@ class Object implements IteratorAggregate
     {
         $bits = explode('.', $path);
 
-        $value = $this->values[array_shift($bits)];
+        $value = $this->getPointer(array_shift($bits));
         foreach ($bits as $bit) {
-            if ($value instanceof self) {
+            if ($value instanceof static) {
                 $value = $value->{$bit};
                 continue;
             }
@@ -113,24 +129,38 @@ class Object implements IteratorAggregate
      */
     public function setValueForPath($path, $value = null)
     {
+        // Explode the path into an array we can iterate over
         $bits = explode('.', $path);
 
-        $pointer = &$this->values[array_shift($bits)];
-        foreach ($bits as $bit) {
+        // Get a pointer to the current object
+        $pointer = &$this;
+
+        // Loop through each section of the path
+        foreach ($bits as $i => $bit) {
+            // If the current pointer is a nested object, store it and
+            // get a pointer another level deeper
             if ($pointer instanceof self) {
-                $pointer = &$pointer->{$bit};
-                continue;
+                $parent  = $pointer;
+                $pointer = &$pointer->getPointer($bit);
             }
 
-            $object  = new static;
-            $pointer = &$object->{$bit};
+            // If this isn't the last item, and the current pointer is not a
+            // nested object, then we create one so that we can go deeper
+            if ($i < sizeof($bits) - 1 && !($pointer instanceof self)) {
+                $parent->{$bit} = new static;
+                $pointer        = &$parent->{$bit};
+            }
         }
 
-        return $pointer = $value;
+        // Set the pointer to the new value
+        $pointer = $value;
+
+        // Return the value set
+        return $value;
     }
 
     /**
-     * Fulfils the IteratorAggregate implementation to allow foreach
+     * Implements method for IteratorAggregate to allow foreach
      * to loop through the object's values.
      *
      * @return \ArrayIterator
