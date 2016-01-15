@@ -146,7 +146,7 @@ class Object implements IteratorAggregate
 
             // If this isn't the last item, and the current pointer is not a
             // nested object, then we create one so that we can go deeper
-            if ($i < sizeof($bits) - 1 && !($pointer instanceof self)) {
+            if ($i < count($bits) - 1 && !($pointer instanceof self)) {
                 $parent->{$bit} = new static;
                 $pointer        = &$parent->{$bit};
             }
