@@ -26,6 +26,26 @@ class ObjectTest extends \Codeception\TestCase\Test
     }
 
     /**
+     * Test object is created correctly, and values which are
+     * non-associative arrays are not modified.
+     *
+     * @covers Molovo\Object\Object::__construct
+     * @covers Molovo\Object\Object::__get
+     */
+    public function testGettingValuesWithNumericArray()
+    {
+        $array = [
+            'test_array'   => [1, 2, 3],
+            'another_test' => ['one', 'two', 'three'],
+        ];
+
+        $object = new Object($array);
+
+        verify($object->test_array)->equals([1, 2, 3]);
+        verify($object->another_test)->equals(['one', 'two', 'three']);
+    }
+
+    /**
      * Test object is created correctly, and nonexistent values return null.
      *
      * @covers Molovo\Object\Object::__construct
