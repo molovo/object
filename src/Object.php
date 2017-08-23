@@ -23,7 +23,7 @@ class Object implements IteratorAggregate
     {
         foreach ($values as &$value) {
             // Value is an array
-            if (is_array($value)) {
+            if (is_array($value) && !empty($value)) {
                 // Copy the array to avoid modifying the original
                 $array = $value;
 
