@@ -9,8 +9,8 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and values can be fetched.
      *
-     * @covers Molovo\Object\Object::__construct
-     * @covers Molovo\Object\Object::__get
+     * @covers \Molovo\Object\Object::__construct
+     * @covers \Molovo\Object\Object::__get
      */
     public function testGettingValues()
     {
@@ -29,8 +29,8 @@ class ObjectTest extends \Codeception\TestCase\Test
      * Test object is created correctly, and values which are
      * non-associative arrays are not modified.
      *
-     * @covers Molovo\Object\Object::__construct
-     * @covers Molovo\Object\Object::__get
+     * @covers \Molovo\Object\Object::__construct
+     * @covers \Molovo\Object\Object::__get
      */
     public function testGettingValuesWithNumericArray()
     {
@@ -48,8 +48,8 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and nonexistent values return null.
      *
-     * @covers Molovo\Object\Object::__construct
-     * @covers Molovo\Object\Object::__get
+     * @covers \Molovo\Object\Object::__construct
+     * @covers \Molovo\Object\Object::__get
      */
     public function testGettingNonexistentValues()
     {
@@ -66,10 +66,10 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and values can be set.
      *
-     * @covers Molovo\Object\Object::__construct
-     * @covers Molovo\Object\Object::__set
+     * @covers \Molovo\Object\Object::__construct
+     * @covers \Molovo\Object\Object::__set
      *
-     * @uses Molovo\Object\Object::__get
+     * @uses \Molovo\Object\Object::__get
      */
     public function testSettingValues()
     {
@@ -90,10 +90,10 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and nonexistent values can be set.
      *
-     * @covers Molovo\Object\Object::__construct
-     * @covers Molovo\Object\Object::__set
+     * @covers \Molovo\Object\Object::__construct
+     * @covers \Molovo\Object\Object::__set
      *
-     * @uses Molovo\Object\Object::__get
+     * @uses \Molovo\Object\Object::__get
      */
     public function testSettingNonexistentValues()
     {
@@ -111,7 +111,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Verify that the toArray function returns the values correctly.
      *
-     * @covers Molovo\Object\Object::toArray
+     * @covers \Molovo\Object\Object::toArray
      */
     public function testToArray()
     {
@@ -132,8 +132,8 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly with nested objects.
      *
-     * @covers Molovo\Object\Object::__construct
-     * @covers Molovo\Object\Object::__get
+     * @covers \Molovo\Object\Object::__construct
+     * @covers \Molovo\Object\Object::__get
      */
     public function testNestedObjects()
     {
@@ -157,10 +157,10 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and values can be set.
      *
-     * @covers Molovo\Object\Object::__construct
-     * @covers Molovo\Object\Object::__set
+     * @covers \Molovo\Object\Object::__construct
+     * @covers \Molovo\Object\Object::__set
      *
-     * @uses Molovo\Object\Object::__get
+     * @uses \Molovo\Object\Object::__get
      */
     public function testSettingWithinNestedObjects()
     {
@@ -181,7 +181,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test can iterate over object values.
      *
-     * @covers Molovo\Object\Object::getIterator
+     * @covers \Molovo\Object\Object::getIterator
      */
     public function testObjectIteration()
     {
@@ -198,6 +198,11 @@ class ObjectTest extends \Codeception\TestCase\Test
         }
     }
 
+    /**
+     * Test can retrieve pointer to a value.
+     *
+     * @covers \Molovo\Object\Object::getPointer
+     */
     public function testGetPointer()
     {
         $array = [
@@ -220,7 +225,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that nested paths can be accessed directly.
      *
-     * @covers Molovo\Object\Object::valueForPath
+     * @covers \Molovo\Object\Object::valueForPath
      */
     public function testValueForPath()
     {
@@ -240,7 +245,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that nested paths can be accessed directly.
      *
-     * @covers Molovo\Object\Object::valueForPath
+     * @covers \Molovo\Object\Object::valueForPath
      */
     public function testValueForNonexistentPath()
     {
@@ -267,9 +272,9 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that nested paths can be set directly.
      *
-     * @covers Molovo\Object\Object::setValueForPath
+     * @covers \Molovo\Object\Object::setValueForPath
      *
-     * @uses Molovo\Object\Object::valueForPath
+     * @uses \Molovo\Object\Object::valueForPath
      */
     public function testSetValueForPath()
     {
@@ -290,9 +295,9 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that nested paths can be set directly.
      *
-     * @covers Molovo\Object\Object::setValueForPath
+     * @covers \Molovo\Object\Object::setValueForPath
      *
-     * @uses Molovo\Object\Object::valueForPath
+     * @uses \Molovo\Object\Object::valueForPath
      */
     public function testSetValueForNonexistentPath()
     {
