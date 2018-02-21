@@ -5,7 +5,7 @@ namespace Molovo\Object;
 use ArrayIterator;
 use IteratorAggregate;
 
-class Object implements IteratorAggregate
+class Object implements IteratorAggregate, ObjectInterface
 {
     /**
      * The stored object values.
@@ -51,27 +51,26 @@ class Object implements IteratorAggregate
      *
      * @return mixed The value
      */
-    public function __get($key)
+    public function __get(string $key)
     {
         if (isset($this->values[$key])) {
             return $this->values[$key];
         }
-
-        return;
     }
 
     /**
      * Set an object value.
      *
-     * @param string $key The key of the value to set
+     * @param string     $key   The key of the value to set
+     * @param null|mixed $value
      *
-     * @return mixed The value
+     * @return self
      */
-    public function __set($key, $value = null)
+    public function __set(string $key, $value = null): ObjectInterface
     {
         $this->values[$key] = $value;
 
-        return $this->values[$key];
+        return $this;
     }
 
     /**
@@ -79,7 +78,7 @@ class Object implements IteratorAggregate
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $rtn = [];
 
@@ -100,7 +99,7 @@ class Object implements IteratorAggregate
      *
      * @return mixed
      */
-    public function &getPointer($key)
+    public function &getPointer(string $key)
     {
         if (!isset($this->values[$key])) {
             $this->values[$key] = null;
@@ -116,7 +115,7 @@ class Object implements IteratorAggregate
      *
      * @return mixed The value
      */
-    public function valueForPath($path)
+    public function valueForPath(string $path)
     {
         $bits = explode('.', $path);
 
@@ -137,11 +136,11 @@ class Object implements IteratorAggregate
      * Set a value for a nested path.
      *
      * @param string $path  The path to set
-     * @param string $value The value to set
+     * @param mixed  $value The value to set
      *
-     * @return mixed The value
+     * @return self
      */
-    public function setValueForPath($path, $value = null)
+    public function setValueForPath(string $path, $value = null): ObjectInterface
     {
         // Explode the path into an array we can iterate over
         $bits = explode('.', $path);
@@ -161,7 +160,7 @@ class Object implements IteratorAggregate
             // If this isn't the last item, and the current pointer is not a
             // nested object, then we create one so that we can go deeper
             if ($i < count($bits) - 1 && !($pointer instanceof self)) {
-                $parent->{$bit} = new static;
+                $parent->{$bit} = new static();
                 $pointer        = &$parent->{$bit};
             }
         }
@@ -169,17 +168,16 @@ class Object implements IteratorAggregate
         // Set the pointer to the new value
         $pointer = $value;
 
-        // Return the value set
-        return $value;
+        return $this;
     }
 
     /**
      * Implements method for IteratorAggregate to allow foreach
      * to loop through the object's values.
      *
-     * @return \ArrayIterator
+     * @return ArrayIterator
      */
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->values);
     }
