@@ -58,4 +58,26 @@ $object->toArray();
 //     'value' => 'rules'
 //   ]
 // ]
+
+// Merge objects together
+$merged = $object->merge(new Object(['new' => 'values']);
+```
+
+##### Immutable Objects
+
+```php
+<?php
+
+use Molovo\Object\ImmutableObject;
+
+$object = new Object([
+  'some' => [
+    'awesome' => [
+      'nested' => 'values'
+    ]
+  ]
+]);
+
+$object->some = 'thing else'; // throws Molovo\Object\Exception\ImmutabilityViolationException
+$object->some->awesome->nested = 'changed'; // throws MolAovo\Object\Exception\ImmutabilityViolationException
 ```
