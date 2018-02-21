@@ -9,8 +9,8 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and values can be fetched.
      *
-     * @covers \Molovo\Object\Object::__construct
-     * @covers \Molovo\Object\Object::__get
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
+     * @covers \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testGettingValues()
     {
@@ -29,8 +29,8 @@ class ObjectTest extends \Codeception\TestCase\Test
      * Test object is created correctly, and values which are
      * non-associative arrays are not modified.
      *
-     * @covers \Molovo\Object\Object::__construct
-     * @covers \Molovo\Object\Object::__get
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
+     * @covers \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testGettingValuesWithNumericArray()
     {
@@ -48,8 +48,8 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and nonexistent values return null.
      *
-     * @covers \Molovo\Object\Object::__construct
-     * @covers \Molovo\Object\Object::__get
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
+     * @covers \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testGettingNonexistentValues()
     {
@@ -66,10 +66,10 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and values can be set.
      *
-     * @covers \Molovo\Object\Object::__construct
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
      * @covers \Molovo\Object\Object::__set
      *
-     * @uses \Molovo\Object\Object::__get
+     * @uses \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testSettingValues()
     {
@@ -90,10 +90,10 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and nonexistent values can be set.
      *
-     * @covers \Molovo\Object\Object::__construct
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
      * @covers \Molovo\Object\Object::__set
      *
-     * @uses \Molovo\Object\Object::__get
+     * @uses \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testSettingNonexistentValues()
     {
@@ -111,7 +111,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Verify that the toArray function returns the values correctly.
      *
-     * @covers \Molovo\Object\Object::toArray
+     * @covers \Molovo\Object\Traits\RetrievesValues::toArray
      */
     public function testToArray()
     {
@@ -132,8 +132,8 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly with nested objects.
      *
-     * @covers \Molovo\Object\Object::__construct
-     * @covers \Molovo\Object\Object::__get
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
+     * @covers \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testNestedObjects()
     {
@@ -157,10 +157,10 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and values can be set.
      *
-     * @covers \Molovo\Object\Object::__construct
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
      * @covers \Molovo\Object\Object::__set
      *
-     * @uses \Molovo\Object\Object::__get
+     * @uses \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testSettingWithinNestedObjects()
     {
@@ -181,7 +181,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test can iterate over object values.
      *
-     * @covers \Molovo\Object\Object::getIterator
+     * @covers \Molovo\Object\Traits\IteratesValues::getIterator
      */
     public function testObjectIteration()
     {
@@ -201,7 +201,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Test can retrieve pointer to a value.
      *
-     * @covers \Molovo\Object\Object::getPointer
+     * @covers \Molovo\Object\Traits\RetrievesValues::getPointer
      */
     public function testGetPointer()
     {
@@ -225,7 +225,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that nested paths can be accessed directly.
      *
-     * @covers \Molovo\Object\Object::valueForPath
+     * @covers \Molovo\Object\Traits\RetrievesValues::valueForPath
      */
     public function testValueForPath()
     {
@@ -245,7 +245,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that nested paths can be accessed directly.
      *
-     * @covers \Molovo\Object\Object::valueForPath
+     * @covers \Molovo\Object\Traits\RetrievesValues::valueForPath
      */
     public function testValueForNonexistentPath()
     {
@@ -274,7 +274,7 @@ class ObjectTest extends \Codeception\TestCase\Test
      *
      * @covers \Molovo\Object\Object::setValueForPath
      *
-     * @uses \Molovo\Object\Object::valueForPath
+     * @uses \Molovo\Object\Traits\RetrievesValues::valueForPath
      */
     public function testSetValueForPath()
     {
@@ -297,7 +297,7 @@ class ObjectTest extends \Codeception\TestCase\Test
      *
      * @covers \Molovo\Object\Object::setValueForPath
      *
-     * @uses \Molovo\Object\Object::valueForPath
+     * @uses \Molovo\Object\Traits\RetrievesValues::valueForPath
      */
     public function testSetValueForNonexistentPath()
     {
@@ -319,5 +319,145 @@ class ObjectTest extends \Codeception\TestCase\Test
         verify($object->nonexistent->nested)->isInstanceOf(Object::class);
         verify($object->nonexistent->nested->path)->equals('changed');
         verify($object->valueForPath('nonexistent.nested.path'))->equals('changed');
+    }
+
+    /**
+     * Tests that objects can be merged.
+     *
+     * @covers \Molovo\Object\Traits\MergesObjects::merge
+     */
+    public function testMerge()
+    {
+        $array = [
+            'some'   => true,
+            'values' => false,
+        ];
+
+        $object = new Object($array);
+
+        $arrayTwo = [
+            'some' => 'changes',
+            'new'  => true,
+        ];
+
+        $objectTwo = new Object($arrayTwo);
+
+        $merged = $object->merge($objectTwo);
+        verify($merged)->isInstanceOf(Object::class);
+        verify($merged->toArray())->equals([
+            'some'   => 'changes',
+            'values' => false,
+            'new'    => true,
+        ]);
+    }
+
+    /**
+     * Tests that objects can be merged deeply.
+     *
+     * @covers \Molovo\Object\Traits\MergesObjects::merge
+     */
+    public function testDeepMerge()
+    {
+        $array = [
+            'some' => [
+                'deeply' => [
+                    'nested' => [
+                        'value' => true,
+                    ],
+                    'another' => true,
+                ],
+            ],
+        ];
+
+        $object = new Object($array);
+
+        $arrayTwo = [
+            'some' => [
+                'deeply' => [
+                    'nested' => [
+                        'value' => 'changed',
+                    ],
+                    'new' => true,
+                ],
+            ],
+        ];
+
+        $objectTwo = new Object($arrayTwo);
+
+        $merged = $object->merge($objectTwo);
+        verify($merged)->isInstanceOf(Object::class);
+        verify($merged->toArray())->equals([
+            'some' => [
+                'deeply' => [
+                    'nested' => [
+                        'value' => 'changed',
+                    ],
+                    'another' => true,
+                    'new'     => true,
+                ],
+            ],
+        ]);
+    }
+
+    /**
+     * Tests that multiple objects can be merged at once.
+     *
+     * @covers \Molovo\Object\Traits\MergesObjects::merge
+     */
+    public function testMultipleMerge()
+    {
+        $array = [
+            'some' => [
+                'deeply' => [
+                    'nested' => [
+                        'value' => true,
+                    ],
+                    'another' => true,
+                ],
+            ],
+        ];
+
+        $object = new Object($array);
+
+        $arrayTwo = [
+            'some' => [
+                'deeply' => [
+                    'nested' => [
+                        'value' => 'changed',
+                    ],
+                    'new' => true,
+                ],
+            ],
+        ];
+
+        $objectTwo = new Object($arrayTwo);
+
+        $arrayThree = [
+            'some' => [
+                'deeply' => [
+                    'nested' => [
+                        'value' => 'changed_again',
+                    ],
+                    'somethingelse' => true,
+                ],
+            ],
+        ];
+
+        $objectThree = new Object($arrayThree);
+
+        $merged = $object->merge($objectTwo, $objectThree);
+        verify($merged)->isInstanceOf(Object::class);
+        verify($merged->toArray())->equals([
+            'some' => [
+                'deeply' => [
+                    'nested' => [
+                        'value' => 'changed_again',
+                    ],
+                    'another'       => true,
+                    'new'           => true,
+                    'somethingelse' => true,
+                ],
+            ],
+        ]);
     }
 }

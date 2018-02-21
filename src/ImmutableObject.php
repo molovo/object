@@ -8,7 +8,7 @@ use Molovo\Object\Traits\ConstructsObjects;
 use Molovo\Object\Traits\IteratesValues;
 use Molovo\Object\Traits\RetrievesValues;
 
-class ImmutableObject implements IteratorAggregate, ObjectInterface
+class ImmutableObject implements ObjectInterface, IteratorAggregate
 {
     use ConstructsObjects, RetrievesValues, IteratesValues;
 

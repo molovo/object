@@ -9,8 +9,8 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and values can be fetched.
      *
-     * @covers \Molovo\Object\Object::__construct
-     * @covers \Molovo\Object\Object::__get
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
+     * @covers \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testGettingValues()
     {
@@ -29,8 +29,8 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
      * Test object is created correctly, and values which are
      * non-associative arrays are not modified.
      *
-     * @covers \Molovo\Object\ImmutableObject::__construct
-     * @covers \Molovo\Object\ImmutableObject::__get
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
+     * @covers \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testGettingValuesWithNumericArray()
     {
@@ -48,8 +48,8 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and nonexistent values return null.
      *
-     * @covers \Molovo\Object\ImmutableObject::__construct
-     * @covers \Molovo\Object\ImmutableObject::__get
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
+     * @covers \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testGettingNonexistentValues()
     {
@@ -66,10 +66,10 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and values cannot be overridden.
      *
-     * @covers \Molovo\Object\ImmutableObject::__construct
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
      * @covers \Molovo\Object\ImmutableObject::__set
      *
-     * @uses \Molovo\Object\ImmutableObject::__get
+     * @uses \Molovo\Object\Traits\RetrievesValues::__get
      *
      * @expectedException \Molovo\Object\Exception\ImmutabilityViolationException
      */
@@ -89,10 +89,10 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and nonexistent values cannot be set.
      *
-     * @covers \Molovo\Object\ImmutableObject::__construct
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
      * @covers \Molovo\Object\ImmutableObject::__set
      *
-     * @uses \Molovo\Object\ImmutableObject::__get
+     * @uses \Molovo\Object\Traits\RetrievesValues::__get
      *
      * @expectedException \Molovo\Object\Exception\ImmutabilityViolationException
      */
@@ -112,7 +112,7 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Verify that the toArray function returns the values correctly.
      *
-     * @covers \Molovo\Object\ImmutableObject::toArray
+     * @covers \Molovo\Object\Traits\RetrievesValues::toArray
      */
     public function testToArray()
     {
@@ -133,8 +133,8 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly with nested objects.
      *
-     * @covers \Molovo\Object\ImmutableObject::__construct
-     * @covers \Molovo\Object\ImmutableObject::__get
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
+     * @covers \Molovo\Object\Traits\RetrievesValues::__get
      */
     public function testNestedObjects()
     {
@@ -158,10 +158,10 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Test object is created correctly, and nested values cannot be overridden.
      *
-     * @covers \Molovo\Object\ImmutableObject::__construct
+     * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
      * @covers \Molovo\Object\ImmutableObject::__set
      *
-     * @uses \Molovo\Object\ImmutableObject::__get
+     * @uses \Molovo\Object\Traits\RetrievesValues::__get
      *
      * @expectedException \Molovo\Object\Exception\ImmutabilityViolationException
      */
@@ -184,7 +184,7 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Test can iterate over object values.
      *
-     * @covers \Molovo\Object\ImmutableObject::getIterator
+     * @covers \Molovo\Object\Traits\IteratesValues::getIterator
      */
     public function testObjectIteration()
     {
@@ -204,7 +204,7 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Test can retrieve pointer to a value.
      *
-     * @covers \Molovo\Object\ImmutableObject::getPointer
+     * @covers \Molovo\Object\Traits\RetrievesValues::getPointer
      */
     public function testGetPointer()
     {
@@ -228,7 +228,7 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that nested paths can be accessed directly.
      *
-     * @covers \Molovo\Object\ImmutableObject::valueForPath
+     * @covers \Molovo\Object\Traits\RetrievesValues::valueForPath
      */
     public function testValueForPath()
     {
@@ -248,7 +248,7 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that nested paths can be accessed directly.
      *
-     * @covers \Molovo\Object\ImmutableObject::valueForPath
+     * @covers \Molovo\Object\Traits\RetrievesValues::valueForPath
      */
     public function testValueForNonexistentPath()
     {
@@ -277,7 +277,7 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
      *
      * @covers \Molovo\Object\ImmutableObject::setValueForPath
      *
-     * @uses \Molovo\Object\ImmutableObject::valueForPath
+     * @uses \Molovo\Object\Traits\RetrievesValues::valueForPath
      *
      * @expectedException \Molovo\Object\Exception\ImmutabilityViolationException
      */
@@ -300,9 +300,9 @@ class ImmutableObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that non-existent nested paths cannot be set directly.
      *
-     * @covers \Molovo\Object\Object::setValueForPath
+     * @covers \Molovo\Object\ImmutableObject::setValueForPath
      *
-     * @uses \Molovo\Object\Object::valueForPath
+     * @uses \Molovo\Object\Traits\RetrievesValues::valueForPath
      *
      * @expectedException \Molovo\Object\Exception\ImmutabilityViolationException
      */

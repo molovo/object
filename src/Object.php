@@ -5,11 +5,12 @@ namespace Molovo\Object;
 use IteratorAggregate;
 use Molovo\Object\Traits\ConstructsObjects;
 use Molovo\Object\Traits\IteratesValues;
+use Molovo\Object\Traits\MergesObjects;
 use Molovo\Object\Traits\RetrievesValues;
 
-class Object implements IteratorAggregate, ObjectInterface
+class Object implements ObjectInterface, MergeableObjectInterface, IteratorAggregate
 {
-    use ConstructsObjects, RetrievesValues, IteratesValues;
+    use ConstructsObjects, RetrievesValues, IteratesValues, MergesObjects;
 
     /**
      * Set an object value.
