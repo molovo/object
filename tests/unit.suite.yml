@@ -12,6 +12,6 @@ coverage:
     remote: false
     whitelist:
         include:
-            - src/Object.php
+            - src/*
         exclude:
             - vendor/*
