@@ -15,10 +15,10 @@ composer require molovo/object
 ```php
 <?php
 
-use Molovo\Object\Object;
+use Molovo\Object\DataObject;
 
 // Pass the array of values directly to the constructor
-$object = new Object([
+$object = new DataObject([
   'some' => [
     'awesome' => [
       'nested' => 'values'
@@ -60,7 +60,7 @@ $object->toArray();
 // ]
 
 // Merge objects together
-$merged = $object->merge(new Object(['new' => 'values']);
+$merged = $object->merge(new DataObject(['new' => 'values']);
 ```
 
 ##### Immutable Objects
@@ -70,7 +70,7 @@ $merged = $object->merge(new Object(['new' => 'values']);
 
 use Molovo\Object\ImmutableObject;
 
-$object = new Object([
+$object = new ImmutableObject([
   'some' => [
     'awesome' => [
       'nested' => 'values'
@@ -79,5 +79,5 @@ $object = new Object([
 ]);
 
 $object->some = 'thing else'; // throws Molovo\Object\Exception\ImmutabilityViolationException
-$object->some->awesome->nested = 'changed'; // throws MolAovo\Object\Exception\ImmutabilityViolationException
+$object->some->awesome->nested = 'changed'; // throws Molovo\Object\Exception\ImmutabilityViolationException
 ```
