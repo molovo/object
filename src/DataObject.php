@@ -8,7 +8,7 @@ use Molovo\Object\Traits\IteratesValues;
 use Molovo\Object\Traits\MergesObjects;
 use Molovo\Object\Traits\RetrievesValues;
 
-class Object implements ObjectInterface, MergeableObjectInterface, IteratorAggregate
+class DataObject implements ObjectInterface, MergeableObjectInterface, IteratorAggregate
 {
     use ConstructsObjects, RetrievesValues, IteratesValues, MergesObjects;
 

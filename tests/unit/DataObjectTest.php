@@ -2,9 +2,9 @@
 
 namespace Molovo\Object\Tests;
 
-use Molovo\Object\Object;
+use Molovo\Object\DataObject;
 
-class ObjectTest extends \Codeception\TestCase\Test
+class DataObjectTest extends \Codeception\TestCase\Test
 {
     /**
      * Test object is created correctly, and values can be fetched.
@@ -19,7 +19,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             'more' => 'more',
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         verify($object->test)->equals('test');
         verify($object->more)->equals('more');
@@ -39,7 +39,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             'another_test' => ['one', 'two', 'three'],
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         verify($object->test_array)->equals([1, 2, 3]);
         verify($object->another_test)->equals(['one', 'two', 'three']);
@@ -58,7 +58,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             'more' => 'more',
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         verify($object->doesnotexist)->null();
     }
@@ -67,7 +67,7 @@ class ObjectTest extends \Codeception\TestCase\Test
      * Test object is created correctly, and values can be set.
      *
      * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
-     * @covers \Molovo\Object\Object::__set
+     * @covers \Molovo\Object\DataObject::__set
      *
      * @uses \Molovo\Object\Traits\RetrievesValues::__get
      */
@@ -78,7 +78,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             'more' => 'more',
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         $object->test = 'changed';
         verify($object->test)->equals('changed');
@@ -91,7 +91,7 @@ class ObjectTest extends \Codeception\TestCase\Test
      * Test object is created correctly, and nonexistent values can be set.
      *
      * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
-     * @covers \Molovo\Object\Object::__set
+     * @covers \Molovo\Object\DataObject::__set
      *
      * @uses \Molovo\Object\Traits\RetrievesValues::__get
      */
@@ -102,7 +102,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             'more' => 'more',
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         $object->doesnotexist = 'changed';
         verify($object->doesnotexist)->equals('changed');
@@ -124,7 +124,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         verify($object->toArray())->equals($array);
     }
@@ -146,11 +146,11 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         verify($object->test)->equals('test');
-        verify($object->testing)->isInstanceOf(Object::class);
-        verify($object->testing->nested)->isInstanceOf(Object::class);
+        verify($object->testing)->isInstanceOf(DataObject::class);
+        verify($object->testing->nested)->isInstanceOf(DataObject::class);
         verify($object->testing->nested->data)->true();
     }
 
@@ -158,7 +158,7 @@ class ObjectTest extends \Codeception\TestCase\Test
      * Test object is created correctly, and values can be set.
      *
      * @covers \Molovo\Object\Traits\ConstructsObjects::__construct
-     * @covers \Molovo\Object\Object::__set
+     * @covers \Molovo\Object\DataObject::__set
      *
      * @uses \Molovo\Object\Traits\RetrievesValues::__get
      */
@@ -172,7 +172,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         $object->testing->nested->data = 'changed';
         verify($object->testing->nested->data)->equals('changed');
@@ -190,7 +190,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             'more' => 'more',
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         foreach ($object as $key => $value) {
             verify(isset($array[$key]))->true();
@@ -209,7 +209,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             'test' => 'test',
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         // Verify that the correct value is returned
         verify($object->getPointer('test'))->equals('test');
@@ -237,7 +237,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         verify($object->valueForPath('testing.nested.data'))->true();
     }
@@ -257,7 +257,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         // Test that the last item is not found
         verify($object->valueForPath('testing.nested.doesnotexist'))->null();
@@ -272,7 +272,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that nested paths can be set directly.
      *
-     * @covers \Molovo\Object\Object::setValueForPath
+     * @covers \Molovo\Object\DataObject::setValueForPath
      *
      * @uses \Molovo\Object\Traits\RetrievesValues::valueForPath
      */
@@ -286,7 +286,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         $object->setValueForPath('testing.nested.data', 'changed');
         verify($object->valueForPath('testing.nested.data'))->equals('changed');
@@ -295,7 +295,7 @@ class ObjectTest extends \Codeception\TestCase\Test
     /**
      * Tests that nested paths can be set directly.
      *
-     * @covers \Molovo\Object\Object::setValueForPath
+     * @covers \Molovo\Object\DataObject::setValueForPath
      *
      * @uses \Molovo\Object\Traits\RetrievesValues::valueForPath
      */
@@ -309,14 +309,14 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         $object->setValueForPath('testing.nested.doesnotexist', 'changed');
         verify($object->valueForPath('testing.nested.doesnotexist'))->equals('changed');
 
         $object->setValueForPath('nonexistent.nested.path', 'changed');
-        verify($object->nonexistent)->isInstanceOf(Object::class);
-        verify($object->nonexistent->nested)->isInstanceOf(Object::class);
+        verify($object->nonexistent)->isInstanceOf(DataObject::class);
+        verify($object->nonexistent->nested)->isInstanceOf(DataObject::class);
         verify($object->nonexistent->nested->path)->equals('changed');
         verify($object->valueForPath('nonexistent.nested.path'))->equals('changed');
     }
@@ -333,17 +333,17 @@ class ObjectTest extends \Codeception\TestCase\Test
             'values' => false,
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         $arrayTwo = [
             'some' => 'changes',
             'new'  => true,
         ];
 
-        $objectTwo = new Object($arrayTwo);
+        $objectTwo = new DataObject($arrayTwo);
 
         $merged = $object->merge($objectTwo);
-        verify($merged)->isInstanceOf(Object::class);
+        verify($merged)->isInstanceOf(DataObject::class);
         verify($merged->toArray())->equals([
             'some'   => 'changes',
             'values' => false,
@@ -369,7 +369,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         $arrayTwo = [
             'some' => [
@@ -382,10 +382,10 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $objectTwo = new Object($arrayTwo);
+        $objectTwo = new DataObject($arrayTwo);
 
         $merged = $object->merge($objectTwo);
-        verify($merged)->isInstanceOf(Object::class);
+        verify($merged)->isInstanceOf(DataObject::class);
         verify($merged->toArray())->equals([
             'some' => [
                 'deeply' => [
@@ -417,7 +417,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $object = new Object($array);
+        $object = new DataObject($array);
 
         $arrayTwo = [
             'some' => [
@@ -430,7 +430,7 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $objectTwo = new Object($arrayTwo);
+        $objectTwo = new DataObject($arrayTwo);
 
         $arrayThree = [
             'some' => [
@@ -443,10 +443,10 @@ class ObjectTest extends \Codeception\TestCase\Test
             ],
         ];
 
-        $objectThree = new Object($arrayThree);
+        $objectThree = new DataObject($arrayThree);
 
         $merged = $object->merge($objectTwo, $objectThree);
-        verify($merged)->isInstanceOf(Object::class);
+        verify($merged)->isInstanceOf(DataObject::class);
         verify($merged->toArray())->equals([
             'some' => [
                 'deeply' => [

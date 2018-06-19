@@ -3,7 +3,6 @@
 namespace Molovo\Object\Traits;
 
 use Molovo\Object\MergeableObjectInterface;
-use Molovo\Object\Object;
 use Molovo\Object\ObjectInterface;
 
 trait MergesObjects
